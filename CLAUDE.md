@@ -86,8 +86,11 @@ NEXT_PUBLIC_SUPABASE_URL=...
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 ```
 
-## หน้าเว็บที่มีอยู่ตอนนี้ (สำหรับทดสอบ deploy)
+## หน้าเว็บที่มีอยู่ตอนนี้
 
 - `/` — หน้าแรก แสดงชื่อร้านและลิงก์ทดสอบ
-- `/generate-qr` — placeholder รอสร้างฟอร์มสร้าง QR โต๊ะจริง
+- `/generate-qr` — หน้าเปิดโต๊ะสำหรับพนักงาน: เช็ค session เปิดค้าง, ปิดโต๊ะเดิม, สร้าง QR ชี้ไป `/order/[เลขโต๊ะ]`
+- `/order/[tableNumber]` — หน้าสั่งอาหารสำหรับลูกค้า (Dynamic Route ใช้ `use(params)` unwrap ตามกติกาด้านบน):
+  เช็ค session เปิดของโต๊ะ, แสดงเมนูเป็นแท็บหมวดหมู่ + ตะกร้า, ส่งออเดอร์ลง `orders`,
+  ปุ่ม "เรียกเก็บเงิน" คำนวณยอด (`adult_count × 289 + child_count × 145`) แล้วปิด session
 - `/kitchen` — placeholder รอสร้างหน้าแสดงออเดอร์ของครัวจริง
